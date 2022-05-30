@@ -1,0 +1,293 @@
+{
+  "contractName": "Owner",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Owner.sol\":\"Owner\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Owner.sol\":{\"keccak256\":\"0x60cf3b9f761ede65a760661bb9fec0cf5d6bda1d5c181d061e800625a12c98af\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://94cbbe1964f29a0f6a8fa96898278d9d5a005b43048053984bb6bc1f5ddfeeae\",\"dweb:/ipfs/QmNSc2annN9CUzK26Z8vTWQ5j3jk3nd63AWr68JezpXqzS\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212204656ad1da8e083fdb29205698445cd06f867dfbbb414698de13edbf80cc1d6a764736f6c63430008090033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212204656ad1da8e083fdb29205698445cd06f867dfbbb414698de13edbf80cc1d6a764736f6c63430008090033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "57:293:7:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "57:293:7:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\ncontract Owner {\n\n    enum OwnerStatus {\n\t\tActive,\n\t\tSold,\n        Frozen\n\t}\n\n    enum OwnerType {\n        Founder,\n        Employee\n    }\n\n    struct Owners {\n        OwnerStatus status;\n        OwnerType user;\n        address owner;\n        uint256 amount;\n        uint256 timeToUse;\n    }\n}",
+  "sourcePath": "/home/karen/distribution contract/contracts/Owner.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Owner.sol",
+    "exportedSymbols": {
+      "Owner": [
+        1203
+      ]
+    },
+    "id": 1204,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1182,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".9"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:7"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Owner",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 1203,
+        "linearizedBaseContracts": [
+          1203
+        ],
+        "name": "Owner",
+        "nameLocation": "66:5:7",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Owner.OwnerStatus",
+            "id": 1186,
+            "members": [
+              {
+                "id": 1183,
+                "name": "Active",
+                "nameLocation": "100:6:7",
+                "nodeType": "EnumValue",
+                "src": "100:6:7"
+              },
+              {
+                "id": 1184,
+                "name": "Sold",
+                "nameLocation": "110:4:7",
+                "nodeType": "EnumValue",
+                "src": "110:4:7"
+              },
+              {
+                "id": 1185,
+                "name": "Frozen",
+                "nameLocation": "124:6:7",
+                "nodeType": "EnumValue",
+                "src": "124:6:7"
+              }
+            ],
+            "name": "OwnerStatus",
+            "nameLocation": "84:11:7",
+            "nodeType": "EnumDefinition",
+            "src": "79:54:7"
+          },
+          {
+            "canonicalName": "Owner.OwnerType",
+            "id": 1189,
+            "members": [
+              {
+                "id": 1187,
+                "name": "Founder",
+                "nameLocation": "164:7:7",
+                "nodeType": "EnumValue",
+                "src": "164:7:7"
+              },
+              {
+                "id": 1188,
+                "name": "Employee",
+                "nameLocation": "181:8:7",
+                "nodeType": "EnumValue",
+                "src": "181:8:7"
+              }
+            ],
+            "name": "OwnerType",
+            "nameLocation": "144:9:7",
+            "nodeType": "EnumDefinition",
+            "src": "139:56:7"
+          },
+          {
+            "canonicalName": "Owner.Owners",
+            "id": 1202,
+            "members": [
+              {
+                "constant": false,
+                "id": 1192,
+                "mutability": "mutable",
+                "name": "status",
+                "nameLocation": "237:6:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1202,
+                "src": "225:18:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_OwnerStatus_$1186",
+                  "typeString": "enum Owner.OwnerStatus"
+                },
+                "typeName": {
+                  "id": 1191,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1190,
+                    "name": "OwnerStatus",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1186,
+                    "src": "225:11:7"
+                  },
+                  "referencedDeclaration": 1186,
+                  "src": "225:11:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_OwnerStatus_$1186",
+                    "typeString": "enum Owner.OwnerStatus"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1195,
+                "mutability": "mutable",
+                "name": "user",
+                "nameLocation": "263:4:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1202,
+                "src": "253:14:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_OwnerType_$1189",
+                  "typeString": "enum Owner.OwnerType"
+                },
+                "typeName": {
+                  "id": 1194,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1193,
+                    "name": "OwnerType",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1189,
+                    "src": "253:9:7"
+                  },
+                  "referencedDeclaration": 1189,
+                  "src": "253:9:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_OwnerType_$1189",
+                    "typeString": "enum Owner.OwnerType"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1197,
+                "mutability": "mutable",
+                "name": "owner",
+                "nameLocation": "285:5:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1202,
+                "src": "277:13:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1196,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "277:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1199,
+                "mutability": "mutable",
+                "name": "amount",
+                "nameLocation": "308:6:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1202,
+                "src": "300:14:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1198,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "300:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1201,
+                "mutability": "mutable",
+                "name": "timeToUse",
+                "nameLocation": "332:9:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1202,
+                "src": "324:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1200,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "324:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Owners",
+            "nameLocation": "208:6:7",
+            "nodeType": "StructDefinition",
+            "scope": 1203,
+            "src": "201:147:7",
+            "visibility": "public"
+          }
+        ],
+        "scope": 1204,
+        "src": "57:293:7",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:318:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-05-27T11:21:09.224Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
