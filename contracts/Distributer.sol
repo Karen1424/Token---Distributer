@@ -84,6 +84,9 @@ contract Distributer is Ownable {
         require(msg.sender == owners[msg.sender].owner, "you can not accsess this information");
         Owners memory user = owners[msg.sender];
         uint256 ownerPercentsAmount = 0;
+        uint256 month = ((block.timestamp - user.allocationTime) / 31 days) + 1;
+        require(month > user.monthsClaimed, "you already use your amount balance for this month");
+        
         if (user.ownerType == OwnerType.Employee) {
             require((user.allocationTime + 180 days) < block.timestamp, "Your account is still frozen");
             ownerPercentsAmount = (user.totalAmount / 10);
@@ -91,9 +94,7 @@ contract Distributer is Ownable {
             require((user.allocationTime + 730 days) < block.timestamp, "Your account is still frozen");
             ownerPercentsAmount = (user.totalAmount / 5);
         }
-        uint256 month = ((block.timestamp - user.allocationTime) / 31 days) + 1;
-        
-        require(month > user.monthsClaimed, "you already use your amount balance for this month");
+       
         fastToken.transfer(msg.sender, month * ownerPercentsAmount);
         user.totalAmount -= (month * ownerPercentsAmount);
         user.monthsClaimed = month;
