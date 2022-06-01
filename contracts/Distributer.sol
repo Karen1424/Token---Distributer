@@ -67,7 +67,7 @@ contract Distributer is Ownable {
 
     function soldTokensManagement(address buyer_, uint256 amount_) public payable onlyOwner {
 
-        //require(amount_ >= soldTokensTotalSupply, "should not exceed the total balance of tokens sold");
+        require(amount_ <= soldTokensTotalSupply, "should not exceed the total balance of tokens sold");
         fastToken.transfer(buyer_, amount_);
         soldTokensTotalSupply -= amount_;
     }
