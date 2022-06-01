@@ -16,9 +16,9 @@ contract Distributer is Ownable {
 
     constructor() { 
         fastToken = new FastToken();
-        foundersTotalSupply = 400000 * 10 ** 18;
-        employeesTotalSupply = 200000 * 10 ** 18;
-        soldTokensTotalSupply = 400000 * 10 ** 18;
+        foundersTotalSupply = (400000 * 10 ** 18);
+        employeesTotalSupply = (200000 * 10 ** 18);
+        soldTokensTotalSupply = (400000 * 10 ** 18);
         require((fastToken.totalSupply() * 10 ** 18) == (foundersTotalSupply + employeesTotalSupply + soldTokensTotalSupply), "does not match total supply"); 
     }
   
@@ -53,7 +53,7 @@ contract Distributer is Ownable {
     function addEmployee(address employee_, uint256 amount_) public onlyOwner {
 
         require(owners[employee_].owner == address(0), "on this address employee already exists");
-        require(employeesTotalSupply >= amount_, "Can not add a new employee because the tokens are exhausted");
+        require(employeesTotalSupply >= amount_, "Can not add a new employee because the tokens are spended");
         Owners memory owner = Owners(OwnerType.Employee,
                                      employee_,
                                      (amount_ - (amount_ / 10)),
@@ -75,26 +75,29 @@ contract Distributer is Ownable {
     /// Owners API
     function currentStatus(address owner_) public view returns(Owners memory) {
 
-        require(msg.sender != owners[owner_].owner, "you can not accsess this information");
+        require(msg.sender == owners[owner_].owner, "you can not accsess this information");
         return owners[owner_];
     }
 
     function claim() public payable {
-
-        require(msg.sender == owners[msg.sender].owner, "you can not accsess this information");
-        uint256 ownerPercentsAmounts = 0;
-        if (owners[msg.sender].ownerType == OwnerType.Employee) {
-            require((owners[msg.sender].allocationTime + 180 days) < block.timestamp, "Your account is still frozen");
-            ownerPercentsAmounts = (owners[msg.sender].totalAmount / 10);
-        } else {
-            require((owners[msg.sender].allocationTime + 730 days) < block.timestamp, "Your account is still frozen");
-            ownerPercentsAmounts = (owners[msg.sender].totalAmount / 5);
-        }
-        uint256 month = ((block.timestamp - (owners[msg.sender].allocationTime)) / 31 days) + 1;
         
-        require(month > owners[msg.sender].monthsClaimed, "you already use your amount balance for this month");
-        fastToken.transfer(msg.sender, month * ownerPercentsAmounts);
-        owners[msg.sender].totalAmount -= (month * ownerPercentsAmounts);
-        owners[msg.sender].monthsClaimed = month;
+        require(msg.sender == owners[msg.sender].owner, "you can not accsess this information");
+        Owners memory user = owners[msg.sender];
+        uint256 ownerPercentsAmount = 0;
+        if (user.ownerType == OwnerType.Employee) {
+            require((user.allocationTime + 180 days) < block.timestamp, "Your account is still frozen");
+            ownerPercentsAmount = (user.totalAmount / 10);
+        } else {
+            require((user.allocationTime + 730 days) < block.timestamp, "Your account is still frozen");
+            ownerPercentsAmount = (user.totalAmount / 5);
+        }
+        uint256 month = ((block.timestamp - user.allocationTime) / 31 days) + 1;
+        
+        require(month > user.monthsClaimed, "you already use your amount balance for this month");
+        fastToken.transfer(msg.sender, month * ownerPercentsAmount);
+        user.totalAmount -= (month * ownerPercentsAmount);
+        user.monthsClaimed = month;
+
+        owners[msg.sender] = user;
     }  
 }

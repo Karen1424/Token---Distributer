@@ -17,23 +17,18 @@ contract("Distributer", (accounts) => {
         await distributer.addEmployee(accounts[3],50000);
         console.log("Employee added")
     });
-
+  
     it("sold Tokens Management", async () => {
-        await distributer.soldTokensManagement(accounts[3],1);
+       await distributer.soldTokensManagement(accounts[3],1000);
+       
     });
 
     it("Current Status", async () => {
-        const status = await distributer.currentStatus(founder);
+        const status = await distributer.currentStatus(accounts[3],{from : accounts[3]});
         console.log("Owner Current status", status);
     });
-
-    it("Owner To Use ", async () => {
-        const status = await distributer.claim({from : accounts[3]});
-        console.log("Owner Current status", status);
-    }); 
-
-    it("Current Status", async () => {
-        const status = await distributer.currentStatus(accounts[3]);
-        console.log("Owner Current status", status);
-    }); 
+//
+   // it("Claim", async () => {
+   //     const status = await distributer.claim({from : accounts[3]});
+   // }); 
 });
