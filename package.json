@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "truffle test",
-    "compile":"truffle compile"
+    "compile":"truffle compile",
+    "build":"truffle compile"
   },
   "keywords": [],
   "author": "Karen Grigoryan",

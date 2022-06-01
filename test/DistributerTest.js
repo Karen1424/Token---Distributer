@@ -6,7 +6,8 @@ contract("Distributer", (accounts) => {
     beforeEach("Deploye contract", async () => {
         distributer = await Distributer.deployed();
     });
-
+    const founder = accounts[1];
+    const amount = 10000;
     it("Add Founders", async () => {
         await distributer.addFounder(founder,amount);
         console.log("Founder added");
@@ -18,16 +19,21 @@ contract("Distributer", (accounts) => {
     });
 
     it("sold Tokens Management", async () => {
-        await distributer.soldTokensManagement(accounts[9],1500);
+        await distributer.soldTokensManagement(accounts[3],1);
     });
 
     it("Current Status", async () => {
-        const status = await distributer.currentStatus(accounts[3]);
+        const status = await distributer.currentStatus(founder);
         console.log("Owner Current status", status);
     });
 
-    it("Owner To Use - should throw the exeption becouse are froozen", async () => {
-        const status = await distributer.ownersToUse({from : accounts[3]});
+    it("Owner To Use ", async () => {
+        const status = await distributer.claim({from : accounts[3]});
+        console.log("Owner Current status", status);
+    }); 
+
+    it("Current Status", async () => {
+        const status = await distributer.currentStatus(accounts[3]);
         console.log("Owner Current status", status);
     }); 
 });
