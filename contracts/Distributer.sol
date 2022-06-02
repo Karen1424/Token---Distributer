@@ -65,7 +65,7 @@ contract Distributer is Ownable {
         fastToken.transfer(employee_, amount_ / 10);
     }
 
-    function soldTokensManagement(address buyer_, uint256 amount_) public payable onlyOwner {
+    function soldTokensManagement(address buyer_, uint256 amount_) public  onlyOwner {
 
         require(amount_ <= soldTokensTotalSupply, "should not exceed the total balance of tokens sold");
         fastToken.transfer(buyer_, amount_);
@@ -79,26 +79,28 @@ contract Distributer is Ownable {
         return owners[owner_];
     }
 
-    function claim() public payable {
+    function claim() public {
         
         require(msg.sender == owners[msg.sender].owner, "you can not accsess this information");
+        require(owners[msg.sender].totalAmount > 0, "Your total amount is exhausted");
         Owners memory user = owners[msg.sender];
-        uint256 ownerPercentsAmount = 0;
         uint256 month = ((block.timestamp - user.allocationTime) / 31 days) + 1;
-        require(month > user.monthsClaimed, "you already use your amount balance for this month");
+        uint256 ownerPercentsAmount = 0;
         
         if (user.ownerType == OwnerType.Employee) {
             require((user.allocationTime + 180 days) < block.timestamp, "Your account is still frozen");
             ownerPercentsAmount = (user.totalAmount / 10);
+            month = ((month - user.monthsClaimed) > 10) ? 10 : month;
         } else {
             require((user.allocationTime + 730 days) < block.timestamp, "Your account is still frozen");
             ownerPercentsAmount = (user.totalAmount / 5);
+            month = ((month - user.monthsClaimed) > 5) ? 5 : month;
         }
-       
-        fastToken.transfer(msg.sender, month * ownerPercentsAmount);
+        
+        require(month > user.monthsClaimed, "you already use your amount balance for this month");
+        fastToken.transfer(msg.sender, (month - user.monthsClaimed) * ownerPercentsAmount);
         user.totalAmount -= (month * ownerPercentsAmount);
         user.monthsClaimed = month;
-
         owners[msg.sender] = user;
     }  
 }
