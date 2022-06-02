@@ -27,8 +27,8 @@ contract("Distributer", (accounts) => {
         const status = await distributer.currentStatus(accounts[3],{from : accounts[3]});
         console.log("Owner Current status", status);
     });
-//
-   // it("Claim", async () => {
-   //     const status = await distributer.claim({from : accounts[3]});
-   // }); 
+
+    it("Claim", async () => {
+        const status = await distributer.claim({from : accounts[3]});
+    }); 
 });
