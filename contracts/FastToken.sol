@@ -9,7 +9,7 @@ contract FastToken is ERC20 {
     constructor()
         ERC20("Fast Token", "FT")
     {
-        _mint(msg.sender, 1000000);   
+        _mint(msg.sender, 1000000 * (10 ** 18));   
     }
 
 }
