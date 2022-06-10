@@ -11,5 +11,4 @@ contract FastToken is ERC20 {
     {
         _mint(msg.sender, 1000000 * (10 ** 18));   
     }
-
 }
