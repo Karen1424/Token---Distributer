@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/Distributer.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> Distributer.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">88.37% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>38/43</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">58.82% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>20/34</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>5/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">88.37% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>38/43</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
+&nbsp;
+/// Library imports
+import "@openzeppelin/contracts/access/Ownable.sol";
+&nbsp;
+/// Local imports
+import "./FastToken.sol";
+&nbsp;
+contract Distributer is Ownable {
+&nbsp;
+    uint256 public foundersTotalSupply;
+    uint256 public employeesTotalSupply;
+    uint256 public soldTokensTotalSupply;
+    FastToken public fastToken;
+    
+    constructor() { 
+        fastToken = new FastToken();
+        foundersTotalSupply = 400000 * (10 ** 18);
+        employeesTotalSupply = 200000 * (10 ** 18);
+        soldTokensTotalSupply = 400000 * (10 ** 18);
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(fastToken.totalSupply() == (foundersTotalSupply + employeesTotalSupply + soldTokensTotalSupply), "Does not match total supply");
+    }
+  
+    mapping(address =&gt; Owners) public owners;
+     
+    enum OwnerType { Founder, Employee }
+&nbsp;
+    struct Owners {
+        OwnerType ownerType;
+        uint256 totalAmount; 
+        uint256 claimed;
+        uint256 allocationTime;
+    }
+&nbsp;
+   function addFounder(address founder_, uint256 amount_) public onlyOwner {
+&nbsp;
+        Owners storage owner = owners[founder_];
+        require(0 == owner.totalAmount, "On founder address Founder already exists");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(amount_ &lt;= foundersTotalSupply, "Can not add a new founder because the tokens are exhausted");
+        owner.ownerType = OwnerType.Founder;
+        owner.totalAmount = amount_;
+        owner.claimed = (amount_ / 5);
+        owner.allocationTime = (block.timestamp);
+        
+        foundersTotalSupply -= amount_;
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(fastToken.transfer(founder_, amount_ / 5), "Cannot transfer tokens");
+    }
+&nbsp;
+    function addEmployee(address employee_, uint256 amount_) public onlyOwner {
+&nbsp;
+        Owners storage owner = owners[employee_];
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(0 == owners[employee_].totalAmount, "On employee address employee already exists");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(amount_ &lt;= employeesTotalSupply, "Can not add a new employee because the tokens are spended");
+        owner.ownerType = OwnerType.Employee;
+        owner.totalAmount = amount_;
+        owner.claimed = (amount_ / 10);
+        owner.allocationTime = (block.timestamp);
+        
+        employeesTotalSupply -= amount_;
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(fastToken.transfer(employee_, amount_ / 10), "Cannot transfer tokens");
+    }
+&nbsp;
+    function soldTokensManagement(address buyer_, uint256 amount_) public onlyOwner {
+&nbsp;
+        <span class="missing-if-branch" title="if path not taken" >I</span>require(amount_ &lt;= soldTokensTotalSupply, "Should not exceed the total balance of tokens sold");
+<span class="cstat-no" title="statement not covered" >        require(fastToken.transfer(buyer_, amount_), "Cannot transfer tokens")</span>;
+<span class="cstat-no" title="statement not covered" >        soldTokensTotalSupply -= amount_</span>;
+    }
+&nbsp;
+    function claim() public {
+&nbsp;
+        Owners storage user = owners[msg.sender];
+        require(0 &lt; user.totalAmount, "You can not accsess this information");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(user.totalAmount &gt; user.claimed, "Your total amount is exhausted");
+        uint256 month = 0;
+        uint256 ta = 0;
+        if (OwnerType.Employee == user.ownerType) {
+&nbsp;
+            require((user.allocationTime + 180 days) &lt; block.timestamp, "Your account is still frozen");
+            month = (block.timestamp - (user.allocationTime + 180 days)) / 30 days + 1;
+            ta = month * user.totalAmount / 10;
+        } else {
+&nbsp;
+            <span class="missing-if-branch" title="if path not taken" >I</span>require((user.allocationTime + 730 days) &lt; block.timestamp, "Your account is still frozen");
+<span class="cstat-no" title="statement not covered" >            month = (block.timestamp - (user.allocationTime + 730 days)) / 30 days + 1</span>;
+<span class="cstat-no" title="statement not covered" >            ta = month * user.totalAmount / 5</span>;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(ta &gt; user.claimed, "You already use your amount balance for this month");
+&nbsp;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (ta &gt; user.totalAmount) {
+<span class="cstat-no" title="statement not covered" >            ta = user.totalAmount</span>;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(fastToken.transfer(msg.sender, (ta - user.claimed)), "Cannot transfer tokens");
+        user.claimed = ta;
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 13 2022 08:51:39 GMT+0400 (Armenia Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

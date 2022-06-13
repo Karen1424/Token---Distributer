@@ -187,7 +187,7 @@ contract("Distributer", async (accounts) => {
 
             await truffleAssert.fails(distributer.claim({ from : buyer }));
         });
-        /*
+        
         it("Claiming by employee will be succsessful using time travel", async () => {
             let dayPerSecond = (180 * 86400) + 1;
             let month = 30 * 86400;
@@ -201,7 +201,7 @@ contract("Distributer", async (accounts) => {
             const result = await distributer.owners(employee1);
             console.log(`Employee claimed: ${ BigInt(result.claimed) }`); 
         });
-    */
+    
         /*
         it("Claiming by founder will be succsessful using time travel", async () => {
              
