@@ -10,7 +10,7 @@
     "test": "truffle test",
     "compile": "truffle compile",
     "build": "truffle compile",
-    "coverage": "jest --collect-coverage"
+    "coverage": "truffle run coverage"
   },
   "keywords": [],
   "author": "Karen Grigoryan",
