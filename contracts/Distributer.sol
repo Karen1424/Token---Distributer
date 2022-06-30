@@ -76,12 +76,10 @@ contract Distributer is Ownable {
         uint256 month = 0;
         uint256 ta = 0;
         if (OwnerType.Employee == user.ownerType) {
-
             require((user.allocationTime + 180 days) < block.timestamp, "Your account is still frozen");
             month = (block.timestamp - (user.allocationTime + 180 days)) / 30 days + 1;
             ta = month * user.totalAmount / 10;
         } else {
-
             require((user.allocationTime + 730 days) < block.timestamp, "Your account is still frozen");
             month = (block.timestamp - (user.allocationTime + 730 days)) / 30 days + 1;
             ta = month * user.totalAmount / 5;
