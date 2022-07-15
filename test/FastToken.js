@@ -14,7 +14,7 @@ contract("Fast Token", async () => {
 
         });
 
-        it("Get name", async () => {
+        it("Get name ", async () => {
 
             let name = await fastToken.name();
             assert(name == "Fast Token", "wrong name");
